@@ -9,7 +9,7 @@
             trElement.innerHTML =
                 `<td class="align-center">${hoa.id}</td>
                 <td><a href="">${hoa.name}</a></td>
-                <td>${hoa.type}</td>
+                <td>${hoa.type_name}</td>
                 <td>${hoa.amount}</td>
                 <td>${hoa.price}</td>
                 <td align="center">

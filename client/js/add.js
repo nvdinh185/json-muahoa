@@ -7,10 +7,10 @@ var form = document.forms['add-form'];
 
         var selectElement = form.querySelector('select[name="loaihoa"]');
 
-        for (const typeName of listHoaType) {
+        for (const type of listHoaType) {
             var optionElement = document.createElement('option');
-            optionElement.value = typeName.type_id;
-            optionElement.innerText = typeName.type_name;
+            optionElement.value = type.type_id;
+            optionElement.innerText = type.type_name;
 
             selectElement.appendChild(optionElement);
         }

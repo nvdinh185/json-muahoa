@@ -28,7 +28,7 @@ var hoaById;
         form.querySelector('input[name="giaban"]').value = hoaById.price;
         form.getElementsByTagName("img")[0].src = hoaById.image;
 
-        console.log(hoaById);
+        // console.log(hoaById);
 
         var listHoaType = await axios.get('http://localhost:3000/hoa/type');
         listHoaType = listHoaType.data;
@@ -71,7 +71,7 @@ form.addEventListener('submit', async function (e) {
         });
 
         //handle success
-        console.log('results: ', results);
+        // console.log('results: ', results);
         window.location = 'list.html';
     } catch (error) {
         var errorElement = document.getElementById('error');

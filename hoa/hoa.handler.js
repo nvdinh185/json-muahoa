@@ -18,7 +18,7 @@ module.exports = {
 
 async function getListHoa() {
     const listHoa = await new Promise((resolve, reject) => {
-        db.all(`SELECT * FROM hoa`, (err, row) => {
+        db.all(`SELECT * FROM hoa JOIN loaihoa ON hoa.type = loaihoa.type_id`, (err, row) => {
             if (err) reject(err);
             resolve(row);
         })
