@@ -9,8 +9,9 @@ router.get('/', getListHoa);
 router.get('/type', getListHoaType);
 router.get('/hoa', getHoaById);
 
-// router.post('/login', postLogin);
 router.post('/add', hoaMiddleware.uploadFile, postAddHoa);
+router.post('/edit', hoaMiddleware.uploadFile, postEditHoa);
+router.post('/delete', postDeleteHoa);
 
 module.exports = router;
 
@@ -32,20 +33,20 @@ function getHoaById(req, res, next) {
         .catch(err => next(err));
 }
 
-// function postLogin(req, res, next) {
-//     usersHandler.postLogin(req.body)
-//         .then(result => res.json(result))
-//         .catch(err => next(err));
-// }
-
-// function postUpdate(req, res, next) {
-//     usersHandler.postUpdate(req.form_data)
-//         .then(result => res.json(result))
-//         .catch(err => next(err));
-// }
-
 function postAddHoa(req, res, next) {
     hoaHandler.postAddHoa(req.form_data)
+        .then(result => res.json(result))
+        .catch(err => next(err));
+}
+
+function postEditHoa(req, res, next) {
+    hoaHandler.postEditHoa(req.form_data)
+        .then(result => res.json(result))
+        .catch(err => next(err));
+}
+
+function postDeleteHoa(req, res, next) {
+    hoaHandler.postDeleteHoa(req.body)
         .then(result => res.json(result))
         .catch(err => next(err));
 }

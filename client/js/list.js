@@ -19,7 +19,7 @@
                     <a href="edit.html?id=${hoa.id}">Sửa
                         <img src="images/pencil.gif" alt="edit" />
                     </a>
-                    <a href="" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">Xóa
+                    <a href="javascript: void(0)" onclick="onClickDelete(${hoa.id})">Xóa
                         <img src="images/bin.gif" width="16" height="16" alt="delete" />
                     </a>
                 </td>`;
@@ -31,3 +31,21 @@
         console.log('Lỗi ', error);
     }
 })()
+
+async function onClickDelete(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa không?')) {
+        try {
+            var results = await axios({
+                method: "POST",
+                url: "http://localhost:3000/hoa/delete",
+                data: { id: id },
+                headers: { "Content-Type": "application/json" },
+            });
+
+            // console.log('results: ', results);
+            window.location = 'list.html';
+        } catch (error) {
+            console.log('Lỗi ', error);
+        }
+    }
+}

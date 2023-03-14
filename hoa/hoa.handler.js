@@ -11,8 +11,9 @@ module.exports = {
     getListHoa,
     getListHoaType,
     getHoaById,
-    // postLogin,
-    postAddHoa
+    postAddHoa,
+    postEditHoa,
+    postDeleteHoa
 }
 
 async function getListHoa() {
@@ -45,31 +46,6 @@ async function getHoaById(query) {
     return hoaById;
 }
 
-async function postLogin(body) {
-    try {
-        const users = await new Promise((resolve, reject) => {
-            db.all(`SELECT * FROM users WHERE email = '${body.email}' AND password = '${body.password}'`, (err, row) => {
-                if (err) reject(err);
-                resolve(row);
-            })
-        })
-        // console.log(users);
-        if (users && users[0]) {
-            const token = jwt.sign({ id: users[0].id, role: users[0].role }, config.secret);
-            const { password, ...userWithoutPassword } = users[0];
-            return {
-                ...userWithoutPassword,
-                token
-            };
-        } else {
-            throw new Error("Cannot find users!");
-        }
-
-    } catch (error) {
-        throw new Error(error);
-    }
-}
-
 async function postAddHoa(formData) {
     return new Promise((resolve, reject) => {
         db.run(`INSERT INTO hoa (name, type, amount, price, image) VALUES (?, ?, ?, ?, ?)`,
@@ -79,5 +55,28 @@ async function postAddHoa(formData) {
                 }
                 resolve(this.changes);
             });
+    })
+}
+
+async function postEditHoa(formData) {
+    return new Promise((resolve, reject) => {
+        db.run(`UPDATE hoa SET name = '${formData.ten}', type = '${formData.loaihoa}', amount = '${formData.soluong}',
+        price = '${formData.giaban}', image = "${formData.file ? formData.file : 'image'}" WHERE id = '${formData.id}'`, function (err) {
+            if (err) {
+                reject(new Error(err.message));
+            }
+            resolve(this.changes);
+        });
+    })
+}
+
+async function postDeleteHoa(body) {
+    return new Promise((resolve, reject) => {
+        db.run(`DELETE FROM hoa WHERE id = ${body.id}`, function (err) {
+            if (err) {
+                reject(new Error(err.message));
+            }
+            resolve(this.changes);
+        });
     })
 }
