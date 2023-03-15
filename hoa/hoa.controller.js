@@ -4,7 +4,7 @@ const router = express.Router();
 const hoaHandler = require('./hoa.handler');
 const hoaMiddleware = require('./hoa.middleware');
 
-// // routes
+// routes
 router.get('/', getListHoa);
 router.get('/type', getListHoaType);
 router.get('/hoa', getHoaById);
