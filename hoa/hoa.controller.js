@@ -6,7 +6,7 @@ const hoaMiddleware = require('./hoa.middleware');
 
 // routes
 router.get('/', getListHoa);
-router.get('/type', getListHoaType);
+router.get('/type', getListTypeHoa);
 router.get('/hoa', getHoaById);
 
 router.post('/add', hoaMiddleware.uploadFile, postAddHoa);
@@ -21,8 +21,8 @@ function getListHoa(req, res, next) {
         .catch(err => next(err));
 }
 
-function getListHoaType(req, res, next) {
-    hoaHandler.getListHoaType()
+function getListTypeHoa(req, res, next) {
+    hoaHandler.getListTypeHoa()
         .then(listHoa => res.json(listHoa))
         .catch(err => next(err));
 }

@@ -9,7 +9,7 @@ db.serialize();
 
 module.exports = {
     getListHoa,
-    getListHoaType,
+    getListTypeHoa,
     getHoaById,
     postAddHoa,
     postEditHoa,
@@ -26,7 +26,7 @@ async function getListHoa() {
     return listHoa;
 }
 
-async function getListHoaType() {
+async function getListTypeHoa() {
     const listHoaType = await new Promise((resolve, reject) => {
         db.all(`SELECT * FROM loaihoa`, (err, row) => {
             if (err) reject(err);
