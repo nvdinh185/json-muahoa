@@ -7,6 +7,13 @@
 	<link rel="icon" type="image/png" href="images/icon.jpg" />
 	<link href="css/reset.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<script src="lib/jquery-3.6.3.min.js"></script>
+	<script src="lib/jquery.validate.min.js"></script>
+	<style>
+		.error {
+			color: red;
+		}
+	</style>
 </head>
 
 <body>
@@ -108,6 +115,44 @@
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+	<script type="text/javascript">
+		$(function () {
+			$('#add-form').validate({
+				rules: {
+					"ten": {
+						required: true
+					},
+					"loaihoa": {
+						required: true
+					},
+					"soluong": {
+						required: true,
+						digits: true
+					},
+					"giaban": {
+						required: true,
+						digits: true
+					}
+				},
+				messages: {
+					"ten": {
+						required: "Yêu cầu nhập!"
+					},
+					"loaihoa": {
+						required: "Yêu cầu nhập!"
+					},
+					"soluong": {
+						required: "Yêu cầu nhập!",
+						digits: "Phải nhập số dương!"
+					},
+					"giaban": {
+						required: "Yêu cầu nhập!",
+						digits: "Phải nhập số dương!"
+					},
+				},
+			})
+		})
+	</script>
 	<script src="lib/axios.min.js"></script>
 	<script src="js/add.js"></script>
 </body>

@@ -34,6 +34,7 @@ var hoaById;
         listHoaType = listHoaType.data;
 
         var selectElement = form.querySelector('select[name="loaihoa"]');
+        selectElement.innerHTML = `<option value=''>-- Chọn loại hoa --</option>`;
 
         for (const typeHoa of listHoaType) {
             var optionElement = document.createElement('option');
