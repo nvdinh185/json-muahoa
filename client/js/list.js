@@ -1,13 +1,21 @@
-(async () => {
-    try {
-        var listHoa = await axios.get('http://localhost:3000/hoa');
-        listHoa = listHoa.data;
-        var bodyElement = document.getElementById('body');
+var currentUser = localStorage.getItem('currentUser');
+currentUser = JSON.parse(currentUser);
+if (currentUser) {
 
-        listHoa.forEach(function (hoa) {
-            var trElement = document.createElement('tr');
-            trElement.innerHTML =
-                `<td class="align-center">${hoa.id}</td>
+    (async () => {
+        try {
+            var listHoa = await axios({
+                method: "GET",
+                url: "http://localhost:3000/hoa",
+                headers: { Authorization: `Bearer ${currentUser.token}` },
+            });
+            listHoa = listHoa.data;
+            var bodyElement = document.getElementById('body');
+
+            listHoa.forEach(function (hoa) {
+                var trElement = document.createElement('tr');
+                trElement.innerHTML =
+                    `<td class="align-center">${hoa.id}</td>
                 <td><a href="">${hoa.name}</a></td>
                 <td>${hoa.type_name}</td>
                 <td>${hoa.amount}</td>
@@ -24,22 +32,27 @@
                     </a>
                 </td>`;
 
-            bodyElement.appendChild(trElement);
+                bodyElement.appendChild(trElement);
 
-        })
-    } catch (error) {
-        console.log('Lỗi ', error);
-    }
-})()
+            })
+        } catch (error) {
+            console.log('Lỗi ', error);
+        }
+    })()
+} else {
+    // Nếu chưa login thì chuyển hướng sang trang login.html
+    location = 'login.html';
+}
 
 async function onClickDelete(id) {
-    if (confirm('Bạn có chắc chắn muốn xóa không?')) {
+    if (confirm('Bạn có chắc muốn xóa không?')) {
         try {
             var results = await axios({
                 method: "POST",
                 url: "http://localhost:3000/hoa/delete",
                 data: { id: id },
-                headers: { "Content-Type": "application/json" },
+                // headers: { "Content-Type": "application/json" },
+                headers: { Authorization: `Bearer ${currentUser.token}` },
             });
 
             // console.log('results: ', results);
@@ -48,4 +61,9 @@ async function onClickDelete(id) {
             console.log('Lỗi ', error);
         }
     }
+}
+
+function onLogout() {
+    localStorage.removeItem('currentUser');
+    location.reload();
 }
