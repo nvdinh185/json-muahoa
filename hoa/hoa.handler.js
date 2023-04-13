@@ -1,7 +1,4 @@
-﻿const config = require('../config.json');
-const jwt = require('jsonwebtoken');
-
-const sqlite3 = require('sqlite3').verbose();
+﻿const sqlite3 = require('sqlite3').verbose();
 const dbFile = './database/shophoa.db';
 
 module.exports = {
