@@ -56,15 +56,19 @@ function uploadFile(req, res, next) {
 }
 
 function authorize(req, res, next) {
-    const token = req.headers['authorization'].slice(7);
-    jwt.verify(token, secret,
-        (err, decoded) => {
-            if (err) {
-                console.log('Lỗi xác thực:', err.message);
-                return res.status(401).json({ message: err.message });
-            } else {
-                // console.log(decoded);
-                next();
-            };
-        });
+    try {
+        const token = req.headers['authorization'].slice(7);
+        jwt.verify(token, secret,
+            (err, decoded) => {
+                if (err) {
+                    console.log('Lỗi xác thực:', err.message);
+                    return res.status(401).json({ message: err.message });
+                } else {
+                    // console.log(decoded);
+                    next();
+                };
+            });
+    } catch (error) {
+        console.log('Lỗi: ' + error);
+    }
 }

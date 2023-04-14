@@ -14,8 +14,7 @@ form.addEventListener('submit', async function (e) {
         var user = await axios({
             method: "POST",
             url: "http://localhost:3000/hoa/login",
-            data: userInfo,
-            headers: { "Content-Type": "application/json" },
+            data: userInfo
         });
 
         // handle success
