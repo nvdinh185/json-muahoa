@@ -21,6 +21,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(publicPath, 'PageNotFound.html'));
+});
+
 // start server
 const port = 3000;
 app.listen(port, () => console.log(`Server is starting on port ${port}...`));
