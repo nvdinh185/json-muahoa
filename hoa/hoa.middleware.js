@@ -70,5 +70,6 @@ function authorize(req, res, next) {
             });
     } catch (error) {
         console.log('Lỗi: ' + error);
+        return res.status(403).json({ error });
     }
 }
