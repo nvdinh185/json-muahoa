@@ -37,6 +37,15 @@ if (currentUser) {
             })
         } catch (error) {
             console.log('Lỗi ', error);
+            var errorElement = document.getElementById('error');
+            errorElement.innerText = 'Xảy ra lỗi!';
+            Object.assign(errorElement.style, {
+                display: 'block',
+                color: 'red',
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+                backgroundColor: 'yellow'
+            })
         }
     })()
 } else {
@@ -59,6 +68,15 @@ async function onClickDelete(id) {
             window.location = 'list.html';
         } catch (error) {
             console.log('Lỗi ', error);
+            var errorElement = document.getElementById('error');
+            errorElement.innerText = 'Xảy ra lỗi!';
+            Object.assign(errorElement.style, {
+                display: 'block',
+                color: 'red',
+                fontStyle: 'italic',
+                fontWeight: 'bold',
+                backgroundColor: 'yellow'
+            })
         }
     }
 }

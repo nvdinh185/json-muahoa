@@ -22,7 +22,7 @@ async function postLogin(req, res, next) {
         // console.log(user);
         if (user) {
             const token = jwt.sign({ id: user.id, username: user.username }, config.secret, {
-                expiresIn: '60000'//1 phút
+                expiresIn: '600000'//10 phút
             });
             const { password, ...userWithoutPassword } = user;
             var result = {

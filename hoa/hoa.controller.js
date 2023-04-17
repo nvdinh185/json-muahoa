@@ -7,8 +7,8 @@ const authHandler = require('./auth.handler');
 
 // routes
 router.get('/', hoaMiddleware.authorize, hoaHandler.getListHoa);
-router.get('/type', hoaHandler.getListTypeHoa);
-router.get('/hoa', hoaHandler.getHoaById);
+router.get('/type', hoaMiddleware.authorize, hoaHandler.getListTypeHoa);
+router.get('/hoa', hoaMiddleware.authorize, hoaHandler.getHoaById);
 
 router.post('/add', hoaMiddleware.uploadFile, hoaHandler.postAddHoa);
 router.post('/edit', hoaMiddleware.uploadFile, hoaHandler.postEditHoa);
