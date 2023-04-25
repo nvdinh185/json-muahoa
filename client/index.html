@@ -7,54 +7,17 @@
 	<link rel="icon" type="image/png" href="images/icon.jpg" />
 	<link href="css/reset.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<script src="lib/jquery-3.6.3.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#header").load("./inc/header.html");
+			$("#footer").load("./inc/footer.html");
+		});
+	</script>
 </head>
 
 <body>
-	<div id="header">
-		<div id="header-status">
-			<div class="container_12">
-				<div class="grid_4">
-					<ul class="user-pro">
-						<li><a href="login.html">Login</a></li>
-					</ul>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-		</div>
-
-		<div id="header-main">
-			<div class="container_12">
-				<div class="grid_12">
-					<div id="logo">
-						<ul id="nav">
-							<li><a href="index.html">Trang chủ</a></li>
-							<li><a href="">Mua hoa</a></li>
-							<li><a href="">Thêm danh mục</a></li>
-							<li><a href="list.html">Xem danh sách</a></li>
-						</ul>
-					</div>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-		</div>
-
-		<div style="clear: both;"></div>
-
-		<div id="subnav">
-			<div class="container_12">
-				<div class="grid_12">
-					<ul>
-						<li><a href="list.html">sản phẩm</a></li>
-						<li><a href="list.html">Danh mục sản phẩm</a></li>
-						<li><a href="add.html">Giới thiệu</a></li>
-						<li><a href="list.html">Đơn hàng</a></li>
-						<li><a href="list.html">Liên hệ</a></li>
-					</ul>
-				</div>
-			</div>
-			<div style="clear: both;"></div>
-		</div>
-	</div>
+	<div id="header"></div>
 
 	<div class="container_12">
 
@@ -91,15 +54,7 @@
 	</div>
 	<div style="clear: both;"></div>
 
-	<div id="footer">
-		<div class="container_12">
-			<div class="grid_12">
-				<p>Copyright &copy; 2013. <a href="http://vinaenter.edu.vn" title="Đã học là làm được">VinaEnter EDU</a>
-				</p>
-			</div>
-		</div>
-		<div style="clear:both;"></div>
-	</div>
+	<div id="footer"></div>
 </body>
 
 </html>
