@@ -19,7 +19,7 @@ if (currentUser) {
 
         try {
 
-            var hoaById = await axios({
+            hoaById = await axios({
                 method: "GET",
                 url: "http://localhost:3000/hoa/hoa",
                 params: {
