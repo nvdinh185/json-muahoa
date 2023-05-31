@@ -65,7 +65,7 @@ async function onClickDelete(id) {
             });
 
             // console.log('results: ', results);
-            window.location = 'list.html';
+            location = 'list.html';
         } catch (error) {
             console.log('Lỗi ', error);
             var errorElement = document.getElementById('error');

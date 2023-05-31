@@ -1,12 +1,10 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 const errorHandler = require('./_helpers/error-handler');
 
 app.use(express.json());
 
-const publicPath = path.join(__dirname, "client");
-app.use(express.static(publicPath));
+app.use(express.static(__dirname + "/client"));
 
 // api routes
 app.use('/hoa', require('./hoa/hoa.controller'));
@@ -15,11 +13,11 @@ app.use('/hoa', require('./hoa/hoa.controller'));
 app.use(errorHandler);
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(publicPath, 'index.html'));
+  res.sendFile(__dirname + '/client/index.html');
 });
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(publicPath, 'PageNotFound.html'));
+  res.sendFile(__dirname + '/client/PageNotFound.html');
 });
 
 // start server

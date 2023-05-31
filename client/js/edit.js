@@ -93,7 +93,7 @@ if (currentUser) {
 
             //handle success
             // console.log('results: ', results);
-            window.location = 'list.html';
+            location = 'list.html';
         } catch (error) {
             var errorElement = document.getElementById('error');
             errorElement.innerText = 'Xảy ra lỗi!';
