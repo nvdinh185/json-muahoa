@@ -53,20 +53,20 @@ class HoaController {
         }
     }
 
-    // [GET] /user/:id
-    async getUserById(req, res, next) {
+    // [GET] /hoa/:id
+    async getHoaById(req, res, next) {
         var id = req.params.id;
         try {
             var conn = mysql.createConnection(configDB);
 
-            const sqlSelect = `SELECT * FROM users WHERE id = '${id}'`;
-            const userById = await new Promise((resolve, reject) => {
+            const sqlSelect = `SELECT * FROM list_hoa WHERE id = '${id}'`;
+            const hoaById = await new Promise((resolve, reject) => {
                 conn.query(sqlSelect, function (err, results) {
                     if (err) reject(err);
                     resolve(results);
                 });
             });
-            res.status(200).send(userById[0]);
+            res.status(200).send(hoaById[0]);
         } catch (err) {
             next(err);
         } finally {
@@ -106,7 +106,7 @@ class HoaController {
         }
     }
 
-    // [PUT] /user/add
+    // [POST] /hoa/add
     async postAddHoa(req, res, next) {
         function generateUuid() {
             return 'xxxx-xxxx-xxx-xxxx'.replace(/[x]/g, function (c) {
@@ -133,17 +133,17 @@ class HoaController {
         }
     }
 
-    // [PUT] /user/update
-    async postUpdate(req, res, next) {
-        var { id, email, fullname, file } = req.form_data;
+    // [PUT] /hoa/edit
+    async postEditHoa(req, res, next) {
+        var { id, name, type, file } = req.form_data;
         // Nếu có chọn ảnh thì update ảnh, nếu không thì lấy lại ảnh cũ
-        var avatarSql = file ? `avatar = "${file}"` : `avatar = avatar`;
+        var imageSql = file ? `image = "${file}"` : `image = image`;
         try {
             var conn = mysql.createConnection(configDB);
 
             const result = await new Promise((resolve, reject) => {
-                conn.query(`UPDATE users SET email = '${email}', fullname = '${fullname}',
-                ${avatarSql} WHERE id = '${id}'`, (err, results) => {
+                conn.query(`UPDATE list_hoa SET name = '${name}', cat_id = '${type}',
+                ${imageSql} WHERE id = '${id}'`, (err, results) => {
                     if (err) reject(err);
                     resolve(results);
                 });
@@ -156,14 +156,14 @@ class HoaController {
         }
     }
 
-    // [DELETE] /user/delete/:id
-    async postDelete(req, res, next) {
+    // [DELETE] /hoa/delete/:id
+    async postDelHoa(req, res, next) {
         var id = req.params.id;
         try {
             var conn = mysql.createConnection(configDB);
 
             const result = await new Promise((resolve, reject) => {
-                conn.query(`DELETE FROM users WHERE id = '${id}'`, (err, results) => {
+                conn.query(`DELETE FROM list_hoa WHERE id = '${id}'`, (err, results) => {
                     if (err) reject(err);
                     resolve(results);
                 });

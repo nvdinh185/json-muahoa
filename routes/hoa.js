@@ -6,11 +6,12 @@ const middleware = require('../middleware/Middleware');
 
 router.get('/', hoaController.getListHoa);
 router.get('/type', hoaController.getListLoaiHoa);
-router.get('/:id', middleware.authorize, hoaController.getUserById);
+router.get('/:id', hoaController.getHoaById);
+
+router.post('/add', middleware.uploadFile, hoaController.postAddHoa);
+router.put('/edit', middleware.uploadFile, hoaController.postEditHoa);
+router.delete('/delete/:id', hoaController.postDelHoa);
 
 router.post('/login', hoaController.postLogin);
-router.post('/add', middleware.uploadFile, hoaController.postAddHoa);
-router.put('/update', middleware.authorize, middleware.uploadFile, hoaController.postUpdate);
-router.delete('/delete/:id', middleware.authorize, hoaController.postDelete);
 
 module.exports = router;

@@ -6,7 +6,7 @@ const { secret } = require('../config.json');
 class Middleware {
 
     uploadFile(req, res, next) {
-        const dirUpload = 'client/avatar';
+        const dirUpload = 'client/uploads';
         if (!fs.existsSync(dirUpload)) fs.mkdirSync(dirUpload);
         const form = new formidable.IncomingForm();
         form.uploadDir = dirUpload;

@@ -15,8 +15,8 @@
             <div class="container_12">
                 <div class="grid_4">
                     <ul class="user-pro">
-                        <li>Chào, <a href="">admin</a></li>
                         <li><a href="">Logout</a></li>
+                        <li>Chào, <a href="">admin</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,6 +49,7 @@
                         <li><a href="list.html">Đơn hàng</a></li>
                         <li><a href="list.html">Liên hệ</a></li>
                     </ul>
+
                 </div><!-- End. .grid_12-->
             </div><!-- End. .container_12 -->
             <div style="clear: both;"></div>
@@ -56,69 +57,42 @@
     </div> <!-- End #header -->
 
     <div class="container_12">
-        <div class="bottom-spacing">
-            <!-- Button -->
-            <div class="float-left">
-                <a href="add.html" class="button">
-                    <span>Thêm hoa mới<img src="images/plus-small.gif" alt="Thêm hoa mới"></span>
-                </a>
-            </div>
-            <div class="clear"></div>
-        </div>
-
+        <!-- Form elements -->
         <div class="grid_12">
             <p style="display: none;" id="error"></p>
 
-            <!-- Example table -->
             <div class="module">
-                <div>
-                    <span id="msg" style="display: none;" class="notification n-success"></span>
-                </div>
-                <h2><span>Danh sách hoa</span></h2>
+                <h2><span>Sửa hoa</span></h2>
 
-                <div class="module-table-body">
-                    <form action="">
-                        <table id="myTable" class="tablesorter">
-                            <thead>
-                                <tr>
-                                    <th style="width:4%; text-align: center;">ID</th>
-                                    <th>Tên hoa</th>
-                                    <th style="width:20%">Loại hoa</th>
-                                    <th style="width:16%; text-align: center;">Hình ảnh</th>
-                                    <th style="width:11%; text-align: center;">Chức năng</th>
-                                </tr>
-                            </thead>
-                            <tbody id="body"></tbody>
-                        </table>
+                <div class="module-body">
+                    <form action="" id="edit-form">
+                        <input type="hidden" name="id">
+                        <p>
+                            <label>Tên hoa</label>
+                            <input type="text" class="input-medium" name="name" />
+                        </p>
+
+                        <p>
+                            <label>Loại hoa</label>
+                            <select class="input-short" name="type">
+                            </select>
+                        </p>
+
+                        <p>
+                            <label>Hình ảnh</label>
+                            <img src="" alt="Không có hình ảnh" id="image">
+                            <input type="file" value="" />
+                        </p>
+
+                        <fieldset>
+                            <input class="submit-green" type="submit" value="Sửa hoa" />
+                            <input class="submit-gray" type="reset" value="Nhập lại" />
+                        </fieldset>
                     </form>
-                </div> <!-- End .module-table-body -->
+                </div> <!-- End .module-body -->
+
             </div> <!-- End .module -->
-
-
-            <div class="pagination">
-                <div class="numbers">
-                    <span>Page:</span>
-                    <a href="">1</a>
-                    <span>|</span>
-                    <a href="">2</a>
-                    <span>|</span>
-                    <span class="current">3</span>
-                    <span>|</span>
-                    <a href="">4</a>
-                    <span>|</span>
-                    <a href="">5</a>
-                    <span>|</span>
-                    <a href="">6</a>
-                    <span>|</span>
-                    <a href="">7</a>
-                    <span>|</span>
-                    <span>...</span>
-                    <span>|</span>
-                    <a href="">99</a>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
-
+            <div style="clear:both;"></div>
         </div> <!-- End .grid_12 -->
 
         <div style="clear:both;"></div>
@@ -136,7 +110,7 @@
     </div> <!-- End #footer -->
 
     <script src="lib/axios.min.js"></script>
-    <script src="js/list.js"></script>
+    <script src="js/edit.js"></script>
 </body>
 
 </html>
