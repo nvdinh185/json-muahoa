@@ -59,47 +59,28 @@
     <div class="container_12">
         <!-- Form elements -->
         <div class="grid_12">
+            <p style="display: none;" id="error"></p>
 
             <div class="module">
                 <h2><span>Thêm hoa</span></h2>
 
                 <div class="module-body">
-                    <form action="">
-
-                        <div>
-                            <span class="notification n-success">Thêm thành công</span>
-                        </div>
+                    <form action="" id="add-form">
 
                         <p>
                             <label>Tên hoa</label>
-                            <input type="text" class="input-medium" />
+                            <input type="text" class="input-medium" name="name" />
                         </p>
 
                         <p>
                             <label>Loại hoa</label>
-                            <select class="input-short">
-                                <option value="">-- Chọn loại hoa --</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                                <option value="4">Option 4</option>
+                            <select class="input-short" name="type">
                             </select>
                         </p>
 
                         <p>
                             <label>Hình ảnh</label>
                             <input type="file" value="" />
-                        </p>
-
-                        <p>
-                            <label>Mô tả</label>
-                            <textarea rows="7" cols="90" class="input-medium"></textarea>
-                        </p>
-
-
-                        <p>
-                            <label>Chi tiết</label>
-                            <textarea rows="7" cols="90" class="input-long"></textarea>
                         </p>
 
                         <fieldset>
@@ -126,6 +107,9 @@
         </div>
         <div style="clear:both;"></div>
     </div> <!-- End #footer -->
+
+    <script src="lib/axios.min.js"></script>
+    <script src="js/add.js"></script>
 </body>
 
 </html>
