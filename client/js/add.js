@@ -1,9 +1,8 @@
-async function getListLoaiHoa() {
+async function showListLoaiHoa() {
     try {
         var listLoaiHoa = await axios({
             method: "GET",
             url: "http://localhost:3000/hoa/type",
-            // headers: { Authorization: `Bearer ${currentUser.token}` },
         });
         listLoaiHoa = listLoaiHoa.data;
 
@@ -30,7 +29,7 @@ async function getListLoaiHoa() {
         })
     }
 }
-getListLoaiHoa();
+showListLoaiHoa();
 
 var form = document.forms['add-form'];
 form.addEventListener('submit', async function (e) {

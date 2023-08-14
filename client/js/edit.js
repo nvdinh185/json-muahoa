@@ -9,19 +9,17 @@ function getParameterByName(name, url = location.href) {
 
 var edId = getParameterByName('id');
 
-async function getHoaToEdit() {
+async function showHoaToEdit() {
     try {
         var listLoaiHoa = await axios({
             method: "GET",
             url: "http://localhost:3000/hoa/type",
-            // headers: { Authorization: `Bearer ${currentUser.token}` },
         });
         listLoaiHoa = listLoaiHoa.data;
 
         var hoaById = await axios({
             method: "GET",
             url: `http://localhost:3000/hoa/${edId}`,
-            // headers: { Authorization: `Bearer ${currentUser.token}` },
         });
         hoaById = hoaById.data;
         var id = document.querySelector('input[name="id"]');
@@ -57,7 +55,7 @@ async function getHoaToEdit() {
         })
     }
 }
-getHoaToEdit();
+showHoaToEdit();
 
 var form = document.forms['edit-form'];
 form.addEventListener('submit', async function (e) {

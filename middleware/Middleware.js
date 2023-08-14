@@ -31,7 +31,7 @@ class Middleware {
                     //chuyển file từ thư mục temp sang thư mục upload_files
                     fs.renameSync(oldPath, newPath);
 
-                    formData[key] = newPath.slice(14);
+                    formData[key] = newPath.slice(15);
                 } else {
                     formData[key] = '';
                 }

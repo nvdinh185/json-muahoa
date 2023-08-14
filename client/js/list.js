@@ -3,7 +3,6 @@ async function getListHoa() {
         var listHoa = await axios({
             method: "GET",
             url: "http://localhost:3000/hoa",
-            // headers: { Authorization: `Bearer ${currentUser.token}` },
         });
         listHoa = listHoa.data;
         var bodyElement = document.getElementById('body');
