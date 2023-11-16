@@ -1,38 +1,29 @@
 async function showListLoaiHoa() {
     try {
-        var listLoaiHoa = await axios({
-            method: "GET",
-            url: "http://localhost:3000/hoa/type",
-        });
+        var listLoaiHoa = await axios("http://localhost:3000/hoa/type");
         listLoaiHoa = listLoaiHoa.data;
 
-        var selectElement = document.querySelector('select[class="input-short"]');
-        selectElement.innerHTML = `<option value=''>-- Chọn loại hoa --</option>`;
+        var selectElement = $('select[class="input-short"]');
+        selectElement.html(`<option value=''>-- Chọn loại hoa --</option>`);
 
         for (const type of listLoaiHoa) {
-            var optionElement = document.createElement('option');
-            optionElement.value = type.id;
-            optionElement.innerText = type.name;
+            var optionElement = $('<option>');
+            optionElement.val(type.id);
+            optionElement.text(type.name);
 
-            selectElement.appendChild(optionElement);
+            selectElement.append(optionElement);
         }
     } catch (error) {
         console.log('Lỗi: ' + error);
-        var errorElement = document.getElementById('error');
-        errorElement.innerText = 'Xảy ra lỗi!';
-        Object.assign(errorElement.style, {
-            display: 'block',
-            color: 'red',
-            fontStyle: 'italic',
-            fontWeight: 'bold',
-            backgroundColor: 'yellow'
-        })
+        var errorElement = $('#error');
+        errorElement.text('Xảy ra lỗi khi lấy dữ liệu!');
+        errorElement.attr('style', 'color: red; font-style: italic;');
     }
 }
 showListLoaiHoa();
 
-var form = document.forms['add-form'];
-form.addEventListener('submit', async function (e) {
+var form = $('#add-form');
+form.on('submit', async function (e) {
     e.preventDefault();
 
     const formData = new FormData();
@@ -55,14 +46,8 @@ form.addEventListener('submit', async function (e) {
         // console.log('results: ', results);
         location = 'list.html?msg=1';
     } catch (error) {
-        var errorElement = document.getElementById('error');
-        errorElement.innerText = 'Xảy ra lỗi!';
-        Object.assign(errorElement.style, {
-            display: 'block',
-            color: 'red',
-            fontStyle: 'italic',
-            fontWeight: 'bold',
-            backgroundColor: 'yellow'
-        })
+        var errorElement = $('#error');
+        errorElement.text('Xảy ra lỗi khi thêm!');
+        errorElement.attr('style', 'color: red; font-style: italic;');
     }
 })

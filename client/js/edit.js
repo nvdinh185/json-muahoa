@@ -11,54 +11,43 @@ var edId = getParameterByName('id');
 
 async function showHoaToEdit() {
     try {
-        var listLoaiHoa = await axios({
-            method: "GET",
-            url: "http://localhost:3000/hoa/type",
-        });
+        var listLoaiHoa = await axios("http://localhost:3000/hoa/type");
         listLoaiHoa = listLoaiHoa.data;
 
-        var hoaById = await axios({
-            method: "GET",
-            url: `http://localhost:3000/hoa/${edId}`,
-        });
+        var hoaById = await axios(`http://localhost:3000/hoa/${edId}`);
         hoaById = hoaById.data;
-        var id = document.querySelector('input[name="id"]');
-        id.value = hoaById.id;
-        var name = document.querySelector('input[name="name"]');
-        name.value = hoaById.name;
-        var image = document.querySelector('#image');
-        image.src = `uploads/${hoaById.image}`;
 
-        var selectElement = document.querySelector('select[class="input-short"]');
-        selectElement.innerHTML = `<option value=''>-- Chọn loại hoa --</option>`;
+        var id = $('input[name="id"]');
+        id.val(hoaById.id);
+        var name = $('input[name="name"]');
+        name.val(hoaById.name);
+        var image = $('#image');
+        image.attr('src', `uploads/${hoaById.image}`);
+
+        var selectElement = $('select[class="input-short"]');
+        selectElement.html(`<option value=''>-- Chọn loại hoa --</option>`);
 
         for (const type of listLoaiHoa) {
-            var optionElement = document.createElement('option');
-            optionElement.value = type.id;
-            optionElement.innerText = type.name;
+            var optionElement = $('<option>');
+            optionElement.val(type.id);
+            optionElement.text(type.name);
             if (hoaById.cat_id === type.id) {
-                optionElement.selected = 'selected';
+                optionElement.attr('selected', 'selected');
             }
 
-            selectElement.appendChild(optionElement);
+            selectElement.append(optionElement);
         }
     } catch (error) {
         console.log('Lỗi: ' + error);
-        var errorElement = document.getElementById('error');
-        errorElement.innerText = 'Xảy ra lỗi!';
-        Object.assign(errorElement.style, {
-            display: 'block',
-            color: 'red',
-            fontStyle: 'italic',
-            fontWeight: 'bold',
-            backgroundColor: 'yellow'
-        })
+        var errorElement = $('#error');
+        errorElement.text('Xảy ra lỗi khi lấy dữ liệu để sửa!');
+        errorElement.attr('style', 'color: red; font-style: italic;');
     }
 }
 showHoaToEdit();
 
-var form = document.forms['edit-form'];
-form.addEventListener('submit', async function (e) {
+var form = $('#edit-form');
+form.on('submit', async function (e) {
     e.preventDefault();
 
     const formData = new FormData();
@@ -81,14 +70,8 @@ form.addEventListener('submit', async function (e) {
         // console.log('results: ', results);
         location = 'list.html?msg=2';
     } catch (error) {
-        var errorElement = document.getElementById('error');
-        errorElement.innerText = 'Xảy ra lỗi!';
-        Object.assign(errorElement.style, {
-            display: 'block',
-            color: 'red',
-            fontStyle: 'italic',
-            fontWeight: 'bold',
-            backgroundColor: 'yellow'
-        })
+        var errorElement = $('#error');
+        errorElement.text('Xảy ra lỗi khi sửa!');
+        errorElement.attr('style', 'color: red; font-style: italic;');
     }
 })
