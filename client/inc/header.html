@@ -2,9 +2,12 @@
     <div class="container_12">
         <div class="grid_4">
             <ul class="user-pro">
-                <li><a href="">Logout</a></li>
-                <li>Chào, <a href="">admin</a></li>
+                <li style="display: none;" id="li1"><a href="javascript: void(0)" onclick="onClickLogout()">Logout</a>
+                </li>
+                <li style="display: none;" id="li2"></li>
+                <li style="display: none;" id="li3"><a href="login.html">Login</a></li>
             </ul>
+
         </div>
     </div>
     <div style="clear:both;"></div>
@@ -16,7 +19,7 @@
         <div class="grid_12">
             <div id="logo">
                 <ul id="nav">
-                    <li id="current"><a href="index.html">Quản trị</a></li>
+                    <li id="current"><a href="index.html">Trang chủ</a></li>
                     <li><a href="taikhoan.html">Tài khoản</a></li>
                 </ul>
             </div><!-- End. #Logo -->
@@ -30,7 +33,7 @@
     <div class="container_12">
         <div class="grid_12">
             <ul>
-                <li><a href="list.html">sản phẩm</a></li>
+                <li><a href="list.html">Danh sách hoa</a></li>
                 <li><a href="list.html">Danh mục sản phẩm</a></li>
                 <li><a href="add.html">Giới thiệu</a></li>
                 <li><a href="list.html">Đơn hàng</a></li>
@@ -41,3 +44,6 @@
     </div><!-- End. .container_12 -->
     <div style="clear: both;"></div>
 </div>
+
+<script src="lib/axios.min.js"></script>
+<script src="js/header.js"></script>

@@ -26,7 +26,14 @@ async function getListHoa() {
         errorElement.attr('style', 'color: red; font-style: italic;');
     }
 }
-getListHoa();
+var currentUser = localStorage.getItem('currentUser');
+currentUser = JSON.parse(currentUser);
+if (currentUser) {
+    getListHoa();
+} else {
+    // Nếu chưa đăng nhập thì chuyển hướng sang trang login.html
+    location = 'login.html';
+}
 
 function getParameterByName(name, url = location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');

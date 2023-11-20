@@ -80,7 +80,8 @@ class HoaController {
             var conn = mysql.createConnection(configDB);
 
             const user = await new Promise((resolve, reject) => {
-                conn.query(`SELECT * FROM users WHERE email = '${req.body.email}' AND password = '${req.body.password}'`, (err, results) => {
+                conn.query(`SELECT * FROM users WHERE username = '${req.body.username}'
+                AND password = '${req.body.password}'`, (err, results) => {
                     if (err) reject(err);
                     resolve(results);
                 })

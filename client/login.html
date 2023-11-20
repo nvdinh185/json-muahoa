@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>VinaEnter EDU - Đã học là làm được</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- Header. Status part -->
+        <!-- End #subnav -->
+    </div> <!-- End #header -->
+
+    <div class="container_12">
+        <p style="display: none;" id="error"></p>
+        <form id="login-form" method="post">
+            <p>Username (*)</p>
+            <input type="text" placeholder="example@gmail.com" name="username" value="" />
+            <p>Password (*)</p>
+            <input type="password" placeholder="Password" name="password" />
+
+            <input type="submit" value="Login">
+        </form>
+
+    </div>
+
+    </div> <!-- End #footer -->
+    <script src="lib/jquery-3.6.3.min.js"></script>
+    <script src="lib/axios.min.js"></script>
+    <script src="js/login.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#header").load("./inc/header.html");
+        });
+    </script>
+</body>
+
+</html>
